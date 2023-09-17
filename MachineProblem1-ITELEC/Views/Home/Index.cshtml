@@ -1,0 +1,156 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+
+    var FirstName = "Vincent";
+    var LastName = "Tampos";
+    var Birthday = "09/11/2002";
+    var IsTenured = true;
+    var SalaryPerHour = 290;
+    var Email = "vincentpaul.tampos.cics@ust.edu.ph";
+
+    var Age = DateTime.Today.Year - DateTime.Parse(Birthday).Year;
+    var EmailSplit = Email.Split("@");
+
+    var SalaryPerDay = SalaryPerHour * 8;
+    var SalaryPerMonth = SalaryPerDay * 30;
+
+    if (IsTenured)
+    {
+        SalaryPerMonth += 500;
+    }
+    
+    var FirstName1 = "John";
+    var LastName1 = "Doe";
+    var IsTenured1 = false;
+    var SalaryPerHour1 = 270;
+    var Email1 = "john.doe.cics@ust.edu.ph";
+
+    var SalaryPerDay1 = SalaryPerHour1 * 8;
+    var SalaryPerMonth1 = SalaryPerDay1 * 30;
+
+    if (IsTenured1)
+    {
+        SalaryPerMonth1 += 500;
+    }
+}
+
+<div class="card">
+    <div class="card-body">
+        <p>I'm @FirstName @LastName and I'm @Age yrs. old</p>
+    </div>
+</div>
+<br/>
+
+<div class="card">
+    <div class="card-body">
+        <p>Email: @Email</p>
+        <p>Domain: @EmailSplit[1]</p>
+        <p>Username: @EmailSplit[0]</p>
+    </div>
+</div>
+<br/>
+
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <p>Name: @FirstName @LastName</p>
+                <p>Email: @Email</p>
+                <p>Status: @(IsTenured ? "Permanent" : "Probationary")</p>
+                <p>Daily Salary: &#8369; @SalaryPerDay</p>
+                <p>Monthly Salary: &#8369; @SalaryPerMonth</p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <p>Name: @FirstName1 @LastName1</p>
+                <p>Email: @Email1</p>
+                <p>Status: @(IsTenured1 ? "Permanent" : "Probationary")</p>
+                <p>Daily Salary: &#8369; @SalaryPerDay1</p>
+                <p>Monthly Salary: &#8369; @SalaryPerMonth1</p>
+            </div>
+        </div>
+    </div>
+</div>
+<br/>
+
+@{
+    // Compute Semgrade
+    var Name = "Vincent Tampos";
+    var PrelimGrade = 89;
+    var FinalGrade = 91;
+    var SemGrade = (PrelimGrade + FinalGrade) / 2;
+}
+
+<div class="card">
+    <div class="card-body">
+        <table class="table">
+            <tr>
+                <th>Name</th>
+                <td>@Name</td>
+            </tr>
+            <tr>
+                <th>Prelim</th>
+                <td>@PrelimGrade</td>
+            </tr>
+            <tr>
+                <th>Final</th>
+                <td>@FinalGrade</td>
+            </tr>
+            <tr>
+                <th>Semestral Grade</th>
+                <td>@SemGrade</td>
+            </tr>
+            <tr>
+                <th>Transmuted Grade</th>
+                <td>
+                    @{
+                        if (SemGrade >= 96)
+                        {
+                            <span>1.00</span>
+                        } 
+                        else if (SemGrade >= 94)
+                        {
+                            <span>1.25</span>
+                        }
+                        else if (SemGrade >= 92)
+                        {
+                            <span>1.50</span>
+                        }
+                        else if (SemGrade >= 89)
+                        {
+                            <span>1.75</span>
+                        }
+                        else if (SemGrade >= 87)
+                        {
+                            <span>2.00</span>
+                        }
+                        else if (SemGrade >= 84)
+                        {
+                            <span>2.25</span>
+                        }
+                        else if (SemGrade >= 82)
+                        {
+                            <span>2.50</span>
+                        }
+                        else if (SemGrade >= 79)
+                        {
+                            <span>2.75</span>
+                        }
+                        else if (SemGrade >= 75)
+                        {
+                            <span>3.00</span>
+                        }
+                        else
+                        {
+                            <span>5.00</span>
+                        }
+                    }
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
